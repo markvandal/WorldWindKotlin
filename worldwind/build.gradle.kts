@@ -86,7 +86,7 @@ kotlin {
                 implementation(libs.lwjgl.opengl)
                 implementation(libs.lwjgl.stb)
 
-                implementation(libs.mil.sym.jvm)
+                implementation(libs.mil.sym.java)
                 implementation(libs.ormlite.jdbc)
             }
         }
@@ -112,7 +112,9 @@ kotlin {
             dependencies {
                 implementation(libs.androidx.annotation)
                 implementation(libs.androidx.appcompat.resources)
-                implementation(libs.mil.sym.android)
+                implementation(libs.mil.sym.android.get().toString()) {
+                    exclude(group = "com.android.support", module = "support-v4")
+                }
                 implementation(libs.ormlite.android)
             }
         }

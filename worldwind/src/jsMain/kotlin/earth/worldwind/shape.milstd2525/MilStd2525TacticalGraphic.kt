@@ -13,9 +13,9 @@ import earth.worldwind.shape.milstd2525.renderer.utilities.*
 import earth.worldwind.util.Logger
 
 actual open class MilStd2525TacticalGraphic actual constructor(
-    sidc: String, locations: List<Location>,
+    symbolID: String, locations: List<Location>,
     boundingSector: Sector, modifiers: Map<String, String>?, attributes: Map<String, String>?
-) : AbstractMilStd2525TacticalGraphic(sidc, boundingSector, modifiers, attributes) {
+) : AbstractMilStd2525TacticalGraphic(symbolID, boundingSector, modifiers, attributes) {
     protected lateinit var controlPoints: java.util.ArrayList<Point2D>
     protected lateinit var pointUL: Point2D
 
@@ -60,7 +60,7 @@ actual open class MilStd2525TacticalGraphic actual constructor(
 //        val rect = if (width > 0 && height > 0) Rectangle2D(leftTop.getX(), leftTop.getY(), width, height) else null
 
         // Create MilStd Symbol and render it
-        val mss = MilStdSymbol(sidc, null, controlPoints, null)
+        val mss = MilStdSymbol(this@MilStd2525TacticalGraphic.symbolID, null, controlPoints, null)
         modifiers?.forEach { (key, value) ->
             when (key) {
                 ModifiersTG.AM_DISTANCE, ModifiersTG.AN_AZIMUTH, ModifiersTG.X_ALTITUDE_DEPTH -> {

@@ -14,18 +14,18 @@ import earth.worldwind.util.Logger
  * See the [MilStd2525Placemark.getPlacemarkAttributes] for more information about resource caching/sharing.
  *
  * @param position The placemark's geographic position
- * @param symbolCode A 15-character alphanumeric identifier that provides the information necessary to display or
+ * @param symbolID A 20-character numeric identifier that provides the information necessary to display or
  * transmit a tactical symbol between MIL-STD-2525 compliant systems.
  * @param symbolModifiers An optional collection of unit or tactical graphic modifiers.
  * @param symbolAttributes An optional collection of rendering attributes.
  */
 actual open class MilStd2525Placemark actual constructor(
-    symbolCode: String,
+    symbolID: String,
     position: Position,
     symbolModifiers: Map<String, String>?,
     symbolAttributes: Map<String, String>?,
     lodSelector: LevelOfDetailSelector
-) : AbstractMilStd2525Placemark(symbolCode, position, symbolModifiers, symbolAttributes, lodSelector) {
+) : AbstractMilStd2525Placemark(symbolID, position, symbolModifiers, symbolAttributes, lodSelector) {
     actual companion object {
         /**
          * A cache of PlacemarkAttribute bundles containing MIL-STD-2525 symbols. Using a cache is essential for memory
@@ -44,9 +44,10 @@ actual open class MilStd2525Placemark actual constructor(
          * Creates a placemark attributes bundle containing a MIL-STD-2525 symbol using the specified modifiers and
          * attributes.
          *
-         * @param symbolCode The 15-character SIDC (symbol identification coding scheme) code.
-         * @param symbolModifiers The ModifierUnit (unit) or ModifierTG (tactical graphic) modifiers collection. May be null.
-         * @param symbolAttributes The MilStdAttributes attributes collection. May be null.
+         * @param symbolCode A 20-character numeric identifier that provides the information necessary to display or
+         * transmit a tactical symbol between MIL-STD-2525 compliant systems.
+         * @param symbolModifiers An optional collection of unit or tactical graphic modifiers.
+         * @param symbolAttributes An optional collection of rendering attributes.
          *
          * @return A new [PlacemarkAttributes] bundle representing the MIL-STD-2525 symbol.
          */
